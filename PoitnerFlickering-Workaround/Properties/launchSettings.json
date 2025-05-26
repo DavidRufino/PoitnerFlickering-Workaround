@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PoitnerFlickering-Workaround (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PoitnerFlickering-Workaround (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
