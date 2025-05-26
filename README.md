@@ -7,6 +7,7 @@ After researching the issue, I created a workaround.
 
 Basically, if you want a custom title bar, don’t use Window.ExtendsContentIntoTitleBar or Window.SetTitleBar.
 
+```csharp
 public sealed partial class MainWindow : Window
 {
     public MainWindow()
@@ -18,18 +19,27 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(AppTitleBar);
     }
 }
+```
 
 Use the AppWindow.TitleBar API:
 
+```csharp
 var titleBar = this.AppWindow.TitleBar;
 titleBar.ExtendsContentIntoTitleBar = true;
+```
 
 Then, disable the default title bar buttons (Minimize, Maximize, Close):
 
+```csharp
 Presenter.IsResizable = true;
 Presenter.SetBorderAndTitleBar(true, false);
+```
 
 and handle the drag area and top resize manually:
 
+```csharp
 this._newWndProc = new WndProcDelegate(CustomWndProc);
 this._prevWndProc = SetWindowLongPtr(this.HWnd, GWLP_WNDPROC, this._newWndProc);
+```
+
+After applying this approach, I haven’t been able to reproduce the issue anymore.
