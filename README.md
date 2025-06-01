@@ -21,7 +21,7 @@ public sealed partial class MainWindow : Window
 }
 ```
 
-Use the AppWindow.TitleBar API:
+Use the AppWindow.TitleBar:
 
 ```csharp
 var titleBar = this.AppWindow.TitleBar;
